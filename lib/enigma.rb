@@ -1,9 +1,9 @@
 class Enigma
 
-  include Key
-  include Offset
-  include EncryptorCode
-  # include MessageEncryptable
+  include Keyable
+  include Offsetable
+  include Codeable
+  include Encryptable
 
   attr_reader :message,
               :key,

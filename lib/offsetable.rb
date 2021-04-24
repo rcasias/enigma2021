@@ -1,4 +1,4 @@
-module Offset
+module Offsetable
 
   def full_offset
     @full_offset = []

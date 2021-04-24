@@ -1,6 +1,6 @@
-module EncryptorCode
-  include Key
-  include Offset
+module Codeable
+  include Keyable
+  include Offsetable
 
   attr_reader :code
 

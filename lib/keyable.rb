@@ -1,4 +1,4 @@
-module Key
+module Keyable
 
   def full_key
     @full_key = []

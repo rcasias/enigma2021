@@ -1,8 +1,8 @@
-module MessageEncryptable
+module Encryptable
 
-  include Key
-  include Offset
-  include EncryptorCode
+  include Keyable
+  include Offsetable
+  include Codeable
 
   def alphabet
     ("a".."z").to_a << " "

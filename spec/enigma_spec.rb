@@ -1,9 +1,9 @@
 require 'rspec'
-require './lib/key'
-require './lib/offset'
-require './lib/encryptor_code'
+require './lib/keyable'
+require './lib/offsetable'
+require './lib/codeable'
+require './lib/encryptable'
 require './lib/enigma'
-require './lib/message_encryptable'
 
 RSpec.describe Enigma do
 
