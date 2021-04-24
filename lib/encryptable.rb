@@ -17,7 +17,7 @@ module Encryptable
         letter_array << (letter.ord - 97)
       end
     end
-    letter_array.zip(code.cycle)
+    letter_array.zip(@code.cycle)
   end
 
   def alphabet_numbers

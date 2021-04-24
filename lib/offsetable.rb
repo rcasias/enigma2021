@@ -13,21 +13,23 @@ module Offsetable
     date_joined = date_without_dash.join
   end
 
-  def date_to_num
-    date_to_num_string.to_i
+  def date_to_num (date = date_to_num_string)
+    date.to_i
+    # ("040895").to_i
+    # require'pry';binding.pry
   end
 
-  def square_date
-    (date_to_num**2)
+  def square_date(date = date_to_num_string)
+    (date_to_num(date)**2)
   end
 
-  def find_offset
-    num_to_string = square_date.to_s
+  def find_offset(date = date_to_num_string)
+    num_to_string = square_date(date).to_s
     last_four = num_to_string[-4..-1]
     last_four.to_i
   end
 
-  def date_nums
-    @full_offset = find_offset.to_s.chars.map { |digit| digit.to_i }
+  def date_nums(date = date_to_num_string)
+    @full_offset = find_offset(date).to_s.chars.map { |digit| digit.to_i }
   end
 end

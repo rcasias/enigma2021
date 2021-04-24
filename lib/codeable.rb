@@ -8,16 +8,16 @@ module Codeable
     @code = code
   end
 
-  def build_key
-    random_full_key
+  def build_key(key = random_full_key_string)
+    random_full_key(key)
   end
 
-  def build_offset
-    date_nums
+  def build_offset(date = date_to_num_string)
+    date_nums(date)
   end
 
-  def add_key_and_offset
-    numbers = build_key.zip(build_offset)
+  def add_key_and_offset(date = date_to_num_string, key = random_full_key_string)
+    numbers = build_key(key).zip(build_offset(date))
     @code = numbers.map do |num|
       num[0] + num[1]
     end
