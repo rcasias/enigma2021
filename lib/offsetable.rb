@@ -13,8 +13,10 @@ module Offsetable
     date_joined = date_without_dash.join
   end
 
-  def date_to_num
-    date_to_num_string.to_i
+  def date_to_num (date = date_to_num_string)
+    date.to_i
+    # ("040895").to_i
+    # require'pry';binding.pry
   end
 
   def square_date

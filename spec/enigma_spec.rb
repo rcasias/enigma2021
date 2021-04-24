@@ -70,18 +70,18 @@ RSpec.describe Enigma do
   # end
 
 
-  it 'encrypt without a give key and date' do
-    enigma = Enigma.new
-    allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
-    allow(enigma).to receive(:date) {"24/04/21"}
-
-      expect = {
-      encryption: "tfwf agicmo",
-      key: "05347",
-      date: "240421"
-     }
-    expect(enigma.encrypt("hello world")).to eq(expect)
-  end
+  # it 'encrypt without a give key and date' do
+  #   enigma = Enigma.new
+  #   allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
+  #   allow(enigma).to receive(:date) {"24/04/21"}
+  #
+  #     expect = {
+  #     encryption: "tfwf agicmo",
+  #     key: "05347",
+  #     date: "240421"
+  #    }
+  #   expect(enigma.encrypt("hello world")).to eq(expect)
+  # end
 
   it 'encrypt' do
     enigma = Enigma.new

@@ -20,6 +20,8 @@ class Enigma
   end
 
   def encrypt(message, key = random_full_key_string, date = date_to_num_string)
+    random_full_key_array(key)
+    date_to_num(date)
     hash = {
       :encryption => number_back_to_letter_joined(message),
       :key => key,

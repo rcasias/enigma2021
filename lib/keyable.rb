@@ -13,9 +13,11 @@ module Keyable
     random_string.rjust(5,'0')
   end
 
-  def random_full_key_array
+  def random_full_key_array(key = random_full_key_string)
     array = []
-    random_full_key_string.each_char do |num|
+    # nums = ("02715")
+    key.each_char do |num|
+    # nums.each_char do |num|
       if array.empty?
         array << num
       elsif array.length == 7
