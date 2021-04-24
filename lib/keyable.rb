@@ -30,14 +30,15 @@ module Keyable
     array
   end
 
-  def random_full_key_split
-    one = random_full_key_array.join
+  def random_full_key_split(key = random_full_key_string)
+    one = random_full_key_array(key).join
     one.scan(/../)
   end
 
-  def random_full_key
-    @full_key = random_full_key_split.map do |num|
+  def random_full_key(key = random_full_key_string)
+    @full_key = random_full_key_split(key).map do |num|
       num.to_i
     end
+    # require'pry';binding.pry
   end
 end
