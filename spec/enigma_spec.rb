@@ -3,6 +3,7 @@ require './lib/keyable'
 require './lib/offsetable'
 require './lib/codeable'
 require './lib/encryptable'
+require './lib/decodeable'
 require './lib/enigma'
 
 RSpec.describe Enigma do
@@ -21,14 +22,14 @@ RSpec.describe Enigma do
   #   expect(enigma.alphabet[26]).to eq(" ")
   # end
 
-  it 'can finde code' do
-    enigma = Enigma.new
-    message = "hello world"
-    allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
-    allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
-
-    expect(enigma.code).to eq([12, 55, 38, 48])
-  end
+  # it 'can find code' do
+  #   enigma = Enigma.new
+  #   message = "hello world"
+  #   allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
+  #   allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
+  #
+  #   expect(enigma.code_decrypt).to eq([12, 55, 38, 48])
+  # end
 
   # it 'can cycle letters' do
   #   enigma = Enigma.new
@@ -93,5 +94,17 @@ RSpec.describe Enigma do
     }
 
     expect(enigma.encrypt("hello world", "02715", "040895")).to eq(expect)
+  end
+
+  it 'decrypt' do
+    enigma = Enigma.new
+
+    expect = {
+    decryption: "hello world",
+    key: "02715",
+    date: "040895"
+    }
+
+    expect(enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expect)
   end
 end
