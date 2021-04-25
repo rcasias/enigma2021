@@ -18,7 +18,6 @@ module Encryptable
       end
     end
     letter_array.zip(@code.cycle)
-    # require"pry";binding.pry
   end
 
   def alphabet_numbers
