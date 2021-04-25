@@ -15,9 +15,6 @@ module Offsetable
 
   def date_to_num (date = date_to_num_string)
     date.to_i
-    # ("040895").to_i
-    # require'pry';binding.pry
-  end
 
   def square_date(date = date_to_num_string)
     (date_to_num(date)**2)
