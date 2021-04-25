@@ -3,7 +3,7 @@ require './lib/keyable'
 require './lib/offsetable'
 require './lib/codeable'
 require './lib/encryptable'
-require './lib/decodeable'
+require './lib/decryptable'
 require './lib/enigma'
 
 RSpec.describe Enigma do
