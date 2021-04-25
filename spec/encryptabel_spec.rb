@@ -19,6 +19,8 @@ RSpec.describe Enigma do
   # it 'can cycle letters' do
   #   allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
   #   allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
+  #   allow(enigma).to receive(:code)  {[12, 55, 38, 48]}
+  #   # mock = double([12, 55, 38, 48])
   #   expect(enigma.encryption_cycle("hello world!").class).to eq(Array)
   #   expect(enigma.encryption_cycle("hello world")[0]).to eq([7, 12])
   #   expect(enigma.encryption_cycle("hello world")[0]).to eq([7, 12])
