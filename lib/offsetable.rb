@@ -5,7 +5,7 @@ module Offsetable
   end
 
   def find_date
-    a = Time.now.strftime("%d/%m/%y")
+    Time.now.strftime("%d/%m/%y")
   end
 
   def date_to_num_string
@@ -15,6 +15,7 @@ module Offsetable
 
   def date_to_num (date = date_to_num_string)
     date.to_i
+  end
 
   def square_date(date = date_to_num_string)
     (date_to_num(date)**2)
