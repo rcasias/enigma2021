@@ -15,9 +15,7 @@ module Keyable
 
   def random_full_key_array(key = random_full_key_string)
     array = []
-    # nums = ("02715")
     key.each_char do |num|
-    # nums.each_char do |num|
       if array.empty?
         array << num
       elsif array.length == 7
@@ -39,6 +37,5 @@ module Keyable
     @full_key = random_full_key_split(key).map do |num|
       num.to_i
     end
-    # require'pry';binding.pry
   end
 end

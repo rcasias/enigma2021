@@ -19,27 +19,7 @@ module Decryptable
       end
     end
     letter_array.zip(@code_decrypt.cycle)
-    # require"pry";binding.pry
   end
-
-  # def alphabet_numbers
-  #   alphabet_number_array = []
-  #   alphabet.each do |letter|
-  #     if letter == " "
-  #   	  alphabet_number_array << 26
-  #     else
-  #       alphabet_number_array << (letter.ord - 97)
-  #     end
-  #   end
-  #   alphabet_number_array
-  # end
-
-  # def alphabet_rotation
-  #   counter = -1
-  #   ah = alphabet.each_with_object({}) do |letter, hash|
-  #     hash[letter] = counter += 1
-  #   end
-  # end
 
   def alphabet_rotation_decrypt(message)
    new_alphabet = []

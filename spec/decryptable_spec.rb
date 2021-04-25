@@ -2,9 +2,9 @@ require 'rspec'
 require './lib/keyable'
 require './lib/offsetable'
 require './lib/codeable'
-require './lib/encryptable'
-require './lib/decryptable'
 require './lib/enigma'
+require './lib/decryptable'
+require './lib/encryptable'
 
 RSpec.describe Enigma do
 
@@ -17,15 +17,14 @@ RSpec.describe Enigma do
   end
 
   # it 'can cycle letters' do
+  #   enigma = Decodeable.new
   #   allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
   #   allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
-  #   allow(enigma).to receive(:code)  {[12, 55, 38, 48]}
-  #   # mock = double([12, 55, 38, 48])
-  #   expect(enigma.encryption_cycle("hello world!").class).to eq(Array)
-  #   expect(enigma.encryption_cycle("hello world")[0]).to eq([7, 12])
-  #   expect(enigma.encryption_cycle("hello world")[0]).to eq([7, 12])
-  #   expect(enigma.encryption_cycle("A")[0][0]).to eq(0)
-  #   expect(enigma.encryption_cycle("a")[0][0]).to eq(0)
+  #   expect(enigma.decryption_cycle("hello world!").class).to eq(Array)
+  #   expect(enigma.decryption_cycle("hello world")[0]).to eq([7, 12])
+  #   expect(enigma.decryption_cycle("hello world")[0]).to eq([7, 12])
+  #   expect(enigma.decryption_cycle("A")[0][0]).to eq(0)
+  #   expect(enigma.decryption_cycle("a")[0][0]).to eq(0)
   # end
 
   it 'can create alphabet number hash' do
@@ -37,15 +36,16 @@ RSpec.describe Enigma do
   end
 
   # it 'can cycle letters' do
+  #   enigma = Decodeable.new
   #   allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
   #   allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
   #   expect(enigma.alphabet_rotation_encrypt("hello world!")[0]).to eq(19)
   #   expect(enigma.alphabet_rotation_encrypt("hello world!")[-1]).to eq(-64)
   #   expect(enigma.alphabet_rotation_encrypt("hello world!").class).to eq(Array)
   # end
-
+  #
   # it 'can cange number back into letter' do
-  #   enigma = Enigma.new
+  #   enigma = Decodeable.new
   #   allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
   #   allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
   #   expect(enigma.number_back_to_letter("hello world!")[0]).to eq("t")
