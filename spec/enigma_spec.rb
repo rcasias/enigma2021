@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'rspec'
 require './lib/keyable'
 require './lib/offsetable'
@@ -37,7 +39,8 @@ RSpec.describe Enigma do
   it 'encrypt without a give key and date' do
     enigma = Enigma.new
     allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
-    allow(enigma).to receive(:date) {"24/04/21"}
+    @fake_time = Time.new(2021, 04, 24)
+    Time.stub(:now) { @fake_time }
 
       expect = {
       encryption: "tfwf agicmo",
