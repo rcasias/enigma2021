@@ -4,7 +4,7 @@ class Enigma
   include Offsetable
   include Codeable
   include Encryptable
-  include Decodeable
+  include Decryptable
 
   attr_reader :message,
               :key,
@@ -45,7 +45,6 @@ class Enigma
       :key => key,
       :date => date
     }
-    # require'pry';binding.pry
   end
 
   def decrypt(message, key, date)

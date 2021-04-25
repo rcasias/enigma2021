@@ -1,4 +1,4 @@
-module Decodeable
+module Decryptable
 
   include Keyable
   include Offsetable
