@@ -5,7 +5,8 @@ module Offsetable
   end
 
   def find_date
-    Time.now.strftime("%d/%m/%y")
+    a = Time.now.strftime("%d/%m/%y")
+    # require'pry';binding.pry
   end
 
   def date_to_num_string
