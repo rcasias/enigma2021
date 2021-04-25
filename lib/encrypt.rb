@@ -5,12 +5,12 @@ require './lib/codeable'
 require './lib/encryptable'
 require './lib/decryptable'
 require './lib/enigma'
-require './lib/encrypt'
+# require './lib/encrypt'
 
 class Encrypt
 
   enigma = Enigma.new
-  
+
   attr_reader :filename,
               :date,
               :key,
@@ -42,10 +42,8 @@ class Encrypt
   end
 
   def key_and_date
-    split_generated_combination.map do |combination|
-      @key = combination[0]
-      @date = combination[1]
-    end
+    @key = split_generated_combination[0]
+    @date = split_generated_combination[1]
   end
 
   encrypt = Encrypt.new('./text/encrypted.txt')
@@ -62,7 +60,6 @@ class Encrypt
     @date = enigma.date_to_num_string
   end
   @message = encrypt_message.generate_message
-  require'pry';binding.pry
   p enigma.encrypt(@message, @key, @date)
 
 end
