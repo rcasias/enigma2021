@@ -24,7 +24,9 @@ module Offsetable
   end
 
   def date_nums(date = date_to_num_string)
-    @full_offset = find_offset(date).to_s.chars.map { |digit| digit.to_i }
+    @full_offset = find_offset(date).to_s.chars.map do |digit|
+      digit.to_i
+    end  
   end
-  
+
 end
