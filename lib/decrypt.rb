@@ -29,11 +29,6 @@ class Decrypt
     @message = message
   end
 
-  # def generate_key_date
-  #   file = File.open(@file_read)
-  #   file_data = file.readlines.map(&:chomp)
-  # end
-
   def generate_message
     file = File.open(@file_read)
     file_data = file.readlines.map(&:chomp)
@@ -52,19 +47,7 @@ class Decrypt
     @date = file_data[0]
   end
 
-  # def split_generated_combination
-  #   split = generate_key_date.map do |element|
-  #     element.split(",")
-  #   end.flatten
-  # end
-
-  # def key_and_date
-  #   @key = split_generated_combination[0]
-  #   @date = split_generated_combination[1]
-  # end
-
   decrypt = Decrypt.new('./text/decrypt_read.txt', './text/decrypt_write.txt', './text/decrypt_date.txt', './text/decrypt_key.txt')
-  # decrypt_message = Decrypt.new('./text/message.txt')
   decrypt.generate_message
   decrypt.generate_key
   decrypt.generate_date
