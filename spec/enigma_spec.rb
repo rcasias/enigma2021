@@ -24,7 +24,7 @@ RSpec.describe Enigma do
     allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
     allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
 
-    expect(enigma.code("040895", "02715")).to eq([3, 27, 73, 20])
+    expect(enigma.create_code("040895", "02715")).to eq([3, 27, 73, 20])
   end
 
   it 'can find code' do
@@ -33,7 +33,7 @@ RSpec.describe Enigma do
     allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
     allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
 
-    expect(enigma.code_decrypt("040895", "02715")).to eq([3, 27, 73, 20])
+    expect(enigma.create_code_decrypt("040895", "02715")).to eq([3, 27, 73, 20])
   end
 
   it 'encrypt without a give key and date' do

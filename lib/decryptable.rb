@@ -18,7 +18,8 @@ module Decryptable
         letter_array << (letter.ord - 97)
       end
     end
-    letter_array.zip(@code_decrypt.cycle)
+    letter_array.zip(code_decrypt.cycle)
+    # require'pry';binding.pry
   end
 
   def alphabet_rotation_decrypt(message)
