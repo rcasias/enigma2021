@@ -41,7 +41,7 @@ RSpec.describe Decrypt do
       expect(decryption_key_date.split_generated_combination[0]).to eq("02715")
       expect(decryption_key_date.split_generated_combination[1]).to eq("040895")
     end
-    
+
   end
 
 end

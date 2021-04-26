@@ -1,4 +1,5 @@
 module Codeable
+
   include Keyable
   include Offsetable
 
