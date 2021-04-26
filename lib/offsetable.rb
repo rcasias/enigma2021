@@ -1,12 +1,7 @@
 module Offsetable
 
-  def full_offset
-    @full_offset = []
-  end
-
   def find_date
-    a = Time.now.strftime("%d/%m/%y")
-    # require'pry';binding.pry
+    Time.now.strftime("%d/%m/%y")
   end
 
   def date_to_num_string
