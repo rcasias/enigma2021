@@ -1,9 +1,5 @@
 module Keyable
 
-  def full_key
-    @full_key = []
-  end
-
   def random
     4.times.map{Random.rand(9).to_s}
   end
