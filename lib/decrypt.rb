@@ -5,7 +5,6 @@ require './lib/codeable'
 require './lib/encryptable'
 require './lib/decryptable'
 require './lib/enigma'
-# require './lib/encrypt'
 
 class Decrypt
 
