@@ -11,15 +11,15 @@ require './lib/encrypt'
 
 RSpec.describe Encrypt do
 
-  encryption = Encrypt.new('./text/message.txt', './text/read_message.txt')
+  encryption = Encrypt.new('./text/encrypt_read.txt', './text/encrypt_write.txt')
 
   it 'exists' do
     expect(encryption).to be_instance_of(Encrypt)
   end
 
   it 'can read initialize' do
-    expect(encryption.file_read).to eq("./text/message.txt")
-    expect(encryption.file_write).to eq('./text/read_message.txt')
+    expect(encryption.file_read).to eq("./text/encrypt_read.txt")
+    expect(encryption.file_write).to eq('./text/encrypt_write.txt')
   end
 
   context 'methods' do

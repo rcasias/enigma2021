@@ -42,7 +42,7 @@ class Encrypt
     @date = split_generated_combination[2]
   end
 
-  encrypt = Encrypt.new('./text/message.txt', './text/read_message.txt')
+  encrypt = Encrypt.new('./text/encrypt_read.txt', './text/encrypt_write.txt')
   encrypt.generate_message_key_date
   encrypt.split_generated_combination
   encrypt.message_key_date
@@ -62,9 +62,7 @@ class Encrypt
     file = File.open(@file_write, "w") { |f| f.write message }
   end
 
-  encrypt.write_to_file('./text/read_message.txt', encrypted_message)
-  p "Encryption key: #{@key}"
-  p "Encryption date: #{@date}"
-  p "Encryption wrote to: #{encrypt.file_write}"
+  encrypt.write_to_file('./text/encrypt_write.txt', encrypted_message)
+  p "Created #{encrypt.file_write} with the key #{@key} and date #{@date}"
 
 end
