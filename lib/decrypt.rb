@@ -66,8 +66,6 @@ class Decrypt
 
   decrypt.write_to_file('./text/decrypt_write.txt', decrypted_message)
 
-  p "Decryption key: #{@key}"
-  p "Decryption date: #{@date}"
-  p "Decryption wrote to: #{decrypt.file_write}"
+  p "Created #{decrypt.file_write} with the key #{@key} and date #{@date}"
 
 end
