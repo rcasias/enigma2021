@@ -55,7 +55,6 @@ class Encrypt
   if @date.nil?
     @date = enigma.date_to_num_string
   end
-  # require'pry';binding.pry
   result = enigma.encrypt(@message, @key, @date)
   encrypted_message = result[:encryption]
 

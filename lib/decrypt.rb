@@ -10,53 +10,81 @@ class Decrypt
 
   enigma = Enigma.new
 
-  attr_reader :filename,
+  attr_reader :file_read,
+              :file_write,
+              :date_read,
+              :key_read,
               :date,
               :key,
               :message
 
 
-  def initialize(filename)
-    @filename = filename
+  def initialize(file_read, file_write, date_read, key_read)
+    @file_read = file_read
+    @file_write = file_write
+    @date_read = date_read
+    @key_read = key_read
     @key = key
     @date = date
     @message = message
   end
 
-  def generate_key_date
-    file = File.open(@filename)
-    file_data = file.readlines.map(&:chomp)
-  end
+  # def generate_key_date
+  #   file = File.open(@file_read)
+  #   file_data = file.readlines.map(&:chomp)
+  # end
 
   def generate_message
-    file = File.open(@filename)
+    file = File.open(@file_read)
     file_data = file.readlines.map(&:chomp)
     @message = file_data[0]
   end
 
-  def split_generated_combination
-    split = generate_key_date.map do |element|
-      element.split(",")
-    end.flatten
+  def generate_key
+    file = File.open(@key_read)
+    file_data = file.readlines.map(&:chomp)
+    @key = file_data[0]
   end
 
-  def key_and_date
-    @key = split_generated_combination[0]
-    @date = split_generated_combination[1]
+  def generate_date
+    file = File.open(@date_read)
+    file_data = file.readlines.map(&:chomp)
+    @date = file_data[0]
   end
 
-  decrypt = Decrypt.new('./text/decrypted.txt')
-  decrypt_message = Decrypt.new('./text/message.txt')
-  decrypt.generate_key_date
-  decrypt.split_generated_combination
-  decrypt.key_and_date
+  # def split_generated_combination
+  #   split = generate_key_date.map do |element|
+  #     element.split(",")
+  #   end.flatten
+  # end
+
+  # def key_and_date
+  #   @key = split_generated_combination[0]
+  #   @date = split_generated_combination[1]
+  # end
+
+  decrypt = Decrypt.new('./text/decrypt_read.txt', './text/decrypt_write.txt', './text/decrypt_date.txt', './text/decrypt_key.txt')
+  # decrypt_message = Decrypt.new('./text/message.txt')
+  decrypt.generate_message
+  decrypt.generate_key
+  decrypt.generate_date
   @key = decrypt.key
   @date = decrypt.date
-  if @date.nil?
+  if @date == ""
     @date = enigma.date_to_num_string
   end
-  @message = decrypt_message.generate_message
-  p enigma.decrypt(@message, @key, @date)
-  # require'pry';binding.pry
+  @message = decrypt.message
+  result = enigma.decrypt(@message, @key, @date)
+  decrypted_message = result[:decryption]
+
+  def write_to_file(file_write, message)
+    file = File.open(@file_write, "w") { |f| f.write message }
+  end
+
+  decrypt.write_to_file('./text/decrypt_write.txt', decrypted_message)
+
+  p "Decryption key: #{@key}"
+  p "Decryption date: #{@date}"
+  p "Decryption wrote to: #{decrypt.file_write}"
 
 end
