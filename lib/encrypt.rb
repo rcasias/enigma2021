@@ -10,46 +10,43 @@ class Encrypt
 
   enigma = Enigma.new
 
-  attr_reader :filename,
+  attr_reader :file_read,
+              :file_write,
               :date,
               :key,
               :message
 
 
-  def initialize(filename)
-    @filename = filename
+  def initialize(file_read, file_write)
+    @file_read = file_read
+    @file_write = file_write
     @key = key
     @date = date
     @message = message
   end
 
-  def generate_key_date
-    file = File.open(@filename)
+  def generate_message_key_date
+    file = File.open(@file_read)
     file_data = file.readlines.map(&:chomp)
-  end
-
-  def generate_message
-    file = File.open(@filename)
-    file_data = file.readlines.map(&:chomp)
-    @message = file_data[0]
   end
 
   def split_generated_combination
-    split = generate_key_date.map do |element|
+    split = generate_message_key_date.map do |element|
       element.split(",")
     end.flatten
   end
 
-  def key_and_date
-    @key = split_generated_combination[0]
-    @date = split_generated_combination[1]
+  def message_key_date
+    @message = split_generated_combination[0]
+    @key = split_generated_combination[1]
+    @date = split_generated_combination[2]
   end
 
-  encrypt = Encrypt.new('./text/encrypted.txt')
-  encrypt_message = Encrypt.new('./text/message.txt')
-  encrypt.generate_key_date
+  encrypt = Encrypt.new('./text/message.txt', './text/read_message.txt')
+  encrypt.generate_message_key_date
   encrypt.split_generated_combination
-  encrypt.key_and_date
+  encrypt.message_key_date
+  @message = encrypt.message
   @key = encrypt.key
   if @key.nil?
     @key = enigma.random_full_key_string
@@ -58,7 +55,16 @@ class Encrypt
   if @date.nil?
     @date = enigma.date_to_num_string
   end
-  @message = encrypt_message.generate_message
-  p enigma.encrypt(@message, @key, @date)
+  result = enigma.encrypt(@message, @key, @date)
+  encrypted_message = result[:encryption]
+
+  def write_to_file(file_write, message)
+    file = File.open(@file_write, "w") { |f| f.write message }
+  end
+
+  encrypt.write_to_file('./text/read_message.txt', encrypted_message)
+  p "Encryption key: #{@key}"
+  p "Encryption date: #{@date}"
+  p "Encryption wrote to: #{encrypt.file_write}"
 
 end
