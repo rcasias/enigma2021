@@ -57,7 +57,7 @@ class Decrypt
     @date = enigma.date_to_num_string
   end
   @message = decrypt_message.generate_message
-  # require'pry';binding.pry
   p enigma.decrypt(@message, @key, @date)
+  # require'pry';binding.pry
 
 end
