@@ -30,7 +30,7 @@ class Enigma
   def encrypt(message, key = random_full_key_string, date = date_to_num_string)
     encrypt_methods(message, key, date)
 
-    decrypted = {
+    encrypted = {
       :encryption => number_back_to_letter_joined(message),
       :key => key,
       :date => date
@@ -50,10 +50,10 @@ class Enigma
     create_code_decrypt(date, key)
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key, date = date_to_num_string)
     decrypt_methods(message, key, date)
 
-    encrypted = {
+    decrypted = {
       :decryption => number_back_to_letter_joined_backwards(message),
       :key => key,
       :date => date

@@ -58,4 +58,36 @@ RSpec.describe Enigma do
     expect(enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expect)
   end
 
+  it 'can decrypt without a date' do
+    allow(enigma).to receive(:random)  {["2", "7", "1", "5"]}
+    allow(Time).to receive(:now).and_return(Date.new(1995, 8, 4))
+
+    encrypted = {
+    encryption: "keder ohulw",
+    key: "02715",
+    date: "040895"
+    }
+
+    decrypted = {
+    decryption: "hello world",
+    key: "02715",
+    date: "040895"
+    }
+
+    expect(enigma.decrypt(encrypted[:encryption], "02715")).to eq(decrypted)
+  end
+
+  it 'can encrypt without a date' do
+    allow(enigma).to receive(:random)  {["2", "7", "1", "5"]}
+    allow(Time).to receive(:now).and_return(Date.new(1995, 8, 4))
+
+    expect = {
+    encryption: "keder ohulw",
+    key: "02715",
+    date: "040895"
+    }
+
+    expect(enigma.encrypt("hello world", "02715")).to eq(expect)
+  end
+
 end
