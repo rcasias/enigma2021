@@ -9,6 +9,10 @@ RSpec.describe Enigma do
 
   enigma = Enigma.new
 
+  it 'exists' do
+    expect(enigma).to be_instance_of(Enigma)
+  end
+
   context 'offset methods' do
 
     it 'can find date' do

@@ -12,6 +12,10 @@ RSpec.describe Enigma do
 
   enigma = Enigma.new
 
+  it 'exists' do
+    expect(enigma).to be_instance_of(Enigma)
+  end
+
   context 'methods on alphabet roataion for decryption' do
 
     it 'populates an alphabet' do

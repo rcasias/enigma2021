@@ -12,6 +12,10 @@ RSpec.describe Enigma do
 
   enigma = Enigma.new
 
+  it 'exists' do
+    expect(enigma).to be_instance_of(Enigma)
+  end
+
   context 'create code methods' do
 
     it 'can build a key' do
@@ -28,7 +32,7 @@ RSpec.describe Enigma do
       allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
       expect(enigma.add_key_and_offset_decode).to eq([12, 55, 38, 48])
     end
-    
+
   end
 
 end

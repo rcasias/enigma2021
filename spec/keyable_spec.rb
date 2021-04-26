@@ -8,6 +8,10 @@ RSpec.describe Enigma do
 
   enigma = Enigma.new
 
+  it 'exists' do
+    expect(enigma).to be_instance_of(Enigma)
+  end
+
   context 'key methods' do
     it 'can generate random number' do
       allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
@@ -29,7 +33,7 @@ RSpec.describe Enigma do
       allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
       expect(enigma.random_full_key_split).to eq(['05', '53', '34', '47'])
     end
-    
+
   end
 
 end
