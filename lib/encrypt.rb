@@ -55,7 +55,7 @@ class Encrypt
   if @date.nil?
     @date = enigma.date_to_num_string
   end
-
+  # require'pry';binding.pry
   result = enigma.encrypt(@message, @key, @date)
   encrypted_message = result[:encryption]
 
@@ -64,8 +64,8 @@ class Encrypt
   end
 
   encrypt.write_to_file('./text/read_message.txt', encrypted_message)
-  p "Encryption key: #{encrypt.key}"
-  p "Encryption date: #{encrypt.date}"
+  p "Encryption key: #{@key}"
+  p "Encryption date: #{@date}"
   p "Encryption wrote to: #{encrypt.file_write}"
 
 end
