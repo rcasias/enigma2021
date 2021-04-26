@@ -6,31 +6,15 @@ class Enigma
   include Encryptable
   include Decryptable
 
-  attr_reader :message,
-              :key,
-              :date,
-              :code,
-              :code_decrypt
-
-  def inititalize
-    @message = message
-    @key = key
-    @date = date
-    @code = code
-    @code_decrypt = code_decrypt
-  end
-
-  def create_code(date = date_to_num_string, key = random_full_key_string)
+  def create_code(date, key)
     @code = add_key_and_offset(date, key)
-    # require'pry';binding.pry
   end
 
   def create_code_decrypt(date, key)
     @code_decrypt = add_key_and_offset_decode(date, key)
   end
 
-  def encrypt(message, key = random_full_key_string, date = date_to_num_string)
-    # require'pry';binding.pry
+  def encrypt_methods(message, key, date)
     random_full_key_array(key)
     random_full_key_split(key)
     random_full_key(key)
@@ -41,14 +25,19 @@ class Enigma
     build_key(key)
     build_offset(date)
     create_code(date, key)
-    hash = {
+  end
+
+  def encrypt(message, key = random_full_key_string, date = date_to_num_string)
+    encrypt_methods(message, key, date)
+
+    decrypted = {
       :encryption => number_back_to_letter_joined(message),
       :key => key,
       :date => date
     }
   end
 
-  def decrypt(message, key, date)
+  def decrypt_methods(message, key, date)
     random_full_key_array(key)
     random_full_key_split(key)
     random_full_key(key)
@@ -59,7 +48,12 @@ class Enigma
     build_key(key)
     build_offset(date)
     create_code_decrypt(date, key)
-    hash = {
+  end
+
+  def decrypt(message, key, date)
+    decrypt_methods(message, key, date)
+
+    encrypted = {
       :decryption => number_back_to_letter_joined_backwards(message),
       :key => key,
       :date => date

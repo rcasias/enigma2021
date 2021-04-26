@@ -19,13 +19,11 @@ RSpec.describe Enigma do
   end
 
   it 'can build an offset' do
-    allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
     expect(enigma.build_offset).to eq([7,2,4,1])
   end
 
   it 'can build a unique code' do
     allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
-    allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
     expect(enigma.add_key_and_offset_decode).to eq([12, 55, 38, 48])
   end
 

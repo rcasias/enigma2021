@@ -10,37 +10,23 @@ require './lib/enigma'
 
 RSpec.describe Enigma do
 
-  it 'exists' do
-    enigma = Enigma.new
+  enigma = Enigma.new
 
+  it 'exists' do
     expect(enigma).to be_instance_of(Enigma)
   end
 
-
-
   it 'can find code' do
-    enigma = Enigma.new
-    message = "hello world"
-    allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
-    allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
-
     expect(enigma.create_code("040895", "02715")).to eq([3, 27, 73, 20])
   end
 
-  it 'can find code' do
-    enigma = Enigma.new
-    message = "hello world"
-    allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
-    allow(enigma).to receive(Time.now.strftime("%d/%m/%y")) {"23/04/21"}
-
+  it 'can find code decrypt' do
     expect(enigma.create_code_decrypt("040895", "02715")).to eq([3, 27, 73, 20])
   end
 
   it 'encrypt without a give key and date' do
-    enigma = Enigma.new
     allow(enigma).to receive(:random)  {["5", "3", "4", "7"]}
-    @fake_time = Time.new(2021, 04, 24)
-    Time.stub(:now) { @fake_time }
+    allow(Time).to receive(:now).and_return(Date.new(2021, 04, 24))
 
       expect = {
       encryption: "tfwf agicmo",
@@ -50,8 +36,7 @@ RSpec.describe Enigma do
     expect(enigma.encrypt("hello world")).to eq(expect)
   end
 
-  it 'encrypt' do
-    enigma = Enigma.new
+  it 'can encrypt' do
 
     expect = {
     encryption: "keder ohulw",
@@ -62,8 +47,7 @@ RSpec.describe Enigma do
     expect(enigma.encrypt("hello world", "02715", "040895")).to eq(expect)
   end
 
-  it 'decrypt' do
-    enigma = Enigma.new
+  it 'can decrypt' do
 
     expect = {
     decryption: "hello world",

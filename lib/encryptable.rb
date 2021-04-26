@@ -17,21 +17,17 @@ module Encryptable
         letter_array << (letter.ord - 97)
       end
     end
-    # require'pry';binding.pry
-
     letter_array.zip(code.cycle)
   end
 
   def alphabet_numbers
-    alphabet_number_array = []
-    alphabet.each do |letter|
+    alphabet.map do |letter|
       if letter == " "
-    	  alphabet_number_array << 26
+    	  26
       else
-        alphabet_number_array << (letter.ord - 97)
+        letter.ord - 97
       end
     end
-    alphabet_number_array
   end
 
   def alphabet_rotation
@@ -42,27 +38,23 @@ module Encryptable
   end
 
   def alphabet_rotation_encrypt(message)
-   new_alphabet = []
-   encryption_cycle(message).each do |num|
+   encryption_cycle(message).map do |num|
      if num[0] >= 0 &&  num[0] <= 26
-       new_alphabet << alphabet_numbers.rotate(num[0]).rotate(num[1])[0]
+       alphabet_numbers.rotate(num[0]).rotate(num[1])[0]
      else
-       new_alphabet << num[0]
+       num[0]
      end
    end
-   new_alphabet
  end
 
  def number_back_to_letter(message)
-   new_letters = []
-   alphabet_rotation_encrypt(message).each do |num|
+   alphabet_rotation_encrypt(message).map do |num|
      if num >= 0 && num <= 26
-       new_letters << alphabet_rotation.key(num)
+       alphabet_rotation.key(num)
      else
-       new_letters << ((num) + (97)).chr
+       ((num) + (97)).chr
      end
    end
-   new_letters
  end
 
  def number_back_to_letter_joined(message)
