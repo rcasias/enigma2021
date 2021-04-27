@@ -57,7 +57,6 @@ class Encrypt
   end
   result = enigma.encrypt(@message, @key, @date)
   encrypted_message = result[:encryption]
-
   def write_to_file(file_write, message)
     file = File.open(@file_write, "w") { |f| f.write message }
   end
